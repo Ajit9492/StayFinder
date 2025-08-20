@@ -1,14 +1,16 @@
-# Use OpenJDK image
-FROM eclipse-temurin:17-jdk-jammy
+FROM maven:3.9.6-eclipse-temurin-17 AS build
 
-# Set working dir
 WORKDIR /app
 
-# Copy pom.xml and build (if using Maven Wrapper include ./mvnw)
 COPY . .
 
-# Build jar
-RUN ./mvnw clean package -DskipTests
+RUN mvn clean package -DskipTests
 
-# Run jar (replace with actual jar name inside target/)
-CMD ["java", "-jar", "target/apigateway-0.0.1-SNAPSHOT.jar"]
+FROM eclipse-temurin:17-jdk-alpine
+
+WORKDIR /app
+
+# Copy the built JAR from the build stage
+COPY --from=build /app/target/apigateway-0.0.1-SNAPSHOT.jar app.jar
+
+ENTRYPOINT ["java", "-jar", "app.jar"]
