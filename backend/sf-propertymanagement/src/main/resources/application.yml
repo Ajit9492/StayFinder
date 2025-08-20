@@ -20,12 +20,12 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+      defaultZone: ${EUREKA_URL:https://stayfinder-eureka-server.onrender.com/eureka/}
   instance:
     prefer-ip-address: true
 
 gateway:
-  base-url: ${GATEWAY_BASE_URL:http://localhost:8000}
+  base-url: ${GATEWAY_BASE_URL:https://project-stay-finder.netlify.app}
 
 server:
   port: ${PORT:8085}

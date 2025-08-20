@@ -13,4 +13,6 @@ WORKDIR /app
 # Copy the built JAR from the build stage
 COPY --from=build /app/target/apigateway-0.0.1-SNAPSHOT.jar app.jar
 
+EXPOSE 8000
+
 ENTRYPOINT ["java", "-jar", "app.jar"]

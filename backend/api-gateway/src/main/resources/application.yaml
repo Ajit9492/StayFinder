@@ -52,7 +52,7 @@ spring:
         corsConfigurations:
           '[/**]':
             allowedOrigins:
-              - ${FRONTEND_URL:https://stayfinder-frontend.netlify.app}
+              - ${FRONTEND_URL:https://project-stay-finder.netlify.app}
               - "http://localhost:9091"
               - "http://localhost:8081"
               - "http://localhost:8083"
@@ -88,7 +88,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+      defaultZone: ${EUREKA_URL:https://stayfinder-eureka-server.onrender.com/eureka/}
   instance:
     prefer-ip-address: true
 
