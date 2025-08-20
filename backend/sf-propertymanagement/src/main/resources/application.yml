@@ -20,7 +20,7 @@ eureka:
     register-with-eureka: true
     fetch-registry: true
     service-url:
-      defaultZone: ${EUREKA_URL:https://stayfinder-eureka-server.onrender.com/eureka/}
+      defaultZone: ${EUREKA_URL:https://eureka-server-psek.onrender.com/eureka/}
   instance:
     prefer-ip-address: true
 
