@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosInstance = axios.create({
-  baseURL: process.env.REACT_APP_API_URL || "https://stayfinder-api-gateway.onrender.com",
+  baseURL: process.env.REACT_APP_API_URL || "https://api-gateway-n8gg.onrender.com",
 });
 
 axiosInstance.interceptors.request.use((config) => {
