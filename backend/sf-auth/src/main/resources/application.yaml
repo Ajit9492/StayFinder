@@ -1,0 +1,29 @@
+spring:
+  application:
+    name: SF-AUTH
+  devtools:
+    restart:
+      enabled: false
+
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
+
+server:
+  port: ${PORT:9091}
+
+jwt:
+  keystore:
+    location: classpath:jwt-keystore.jks
+    password: password
+    alias: jwt-key
+
+logging:
+  level:
+    root: INFO
+    com.stayfinder.Auth_Service: DEBUG

@@ -1,0 +1,34 @@
+spring:
+  application:
+    name: SF-USERMANAGEMENT
+  security:
+    user:
+      name: disable
+      password: disable
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://ep-small-thunder-a1mbrg0k-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require}
+    username: ${DB_USERNAME:neondb_owner}
+    password: ${DB_PASSWORD:npg_vyjmQkB2Gh6P}
+    driver-class-name: org.postgresql.Driver
+
+  jpa:
+    hibernate:
+      ddl-auto: update
+    show-sql: true
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: none
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:8761/eureka}
+  instance:
+    prefer-ip-address: true
+
+server:
+  port: ${PORT:8081}
+
