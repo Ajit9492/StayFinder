@@ -9,9 +9,9 @@ spring:
     password: disable
 
   datasource:
-    url: ${DB_URL:jdbc:postgresql://ep-small-thunder-a1mbrg0k-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require}
+    url: ${DB_URL:jdbc:postgresql://ep-proud-pine-a1qd69pw-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require}
     username: ${DB_USERNAME:neondb_owner}
-    password: ${DB_PASSWORD:npg_vyjmQkB2Gh6P}
+    password: ${DB_PASSWORD:npg_VR45UTgJYMhc}
     driver-class-name: org.postgresql.Driver
 
   jpa:
