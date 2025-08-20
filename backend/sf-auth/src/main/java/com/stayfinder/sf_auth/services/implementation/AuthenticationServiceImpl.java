@@ -9,6 +9,7 @@ import com.stayfinder.sf_auth.dto.UserDTO;
 import com.stayfinder.sf_auth.exceptions.UserAlreadyExistsException;
 import com.stayfinder.sf_auth.feign.UserClient;
 import com.stayfinder.sf_auth.services.interfaces.AuthenticationService;
+import feign.FeignException;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -31,16 +32,16 @@ public class AuthenticationServiceImpl implements AuthenticationService {
     private final UserClient userClient;
 
     public AuthenticationResponse register(RegisterUserRequestDTO request) {
-
-        UserDTO userDto;
         try {
-            userDto = userClient.registerUser(request).getBody();
-        }catch(RuntimeException e){
-            throw new UserAlreadyExistsException("User Already exist, Please login!! ");
+            UserDTO userDto = userClient.registerUser(request).getBody();
+            assert userDto != null;
+            var jwtToken = jwtServiceImpl.generateToken(userDto);
+            return AuthenticationResponse.builder().token(jwtToken).build();
+        } catch (FeignException.Conflict e) { // only 409 from user service
+            throw new UserAlreadyExistsException("User already exists, please login!");
+        } catch (FeignException e) {
+            throw new RuntimeException("User service unavailable: " + e.getMessage());
         }
-        assert userDto != null;
-        var jwtToken = jwtServiceImpl.generateToken(userDto);
-        return AuthenticationResponse.builder().token(jwtToken).build();
     }
 
     public AuthenticationResponse authenticate(AuthenticationRequest request) {
