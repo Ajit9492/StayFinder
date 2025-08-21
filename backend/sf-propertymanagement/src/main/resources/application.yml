@@ -3,9 +3,9 @@ spring:
     name: SF-PROPERTY-SERVICE
 
   datasource:
-    url: ${DB_URL:jdbc:postgresql://ep-proud-pine-a1qd69pw-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require}
+    url: ${DB_URL:jdbc:postgresql://ep-nameless-fog-a1hv10ul-pooler.ap-southeast-1.aws.neon.tech/neondb?sslmode=require&channel_binding=require}
     username: ${DB_USERNAME:neondb_owner}
-    password: ${DB_PASSWORD:npg_VR45UTgJYMhc}
+    password: ${DB_PASSWORD:npg_rNZBv8IfTKD3}
     driver-class-name: org.postgresql.Driver
   jpa:
     hibernate:
